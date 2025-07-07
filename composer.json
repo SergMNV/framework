@@ -1,0 +1,16 @@
+{
+    "name": "serg/framework",
+    "autoload": {
+        "psr-4": {
+            "Serg\\Framework\\": "src/"
+        },
+        "files": []
+    },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t public/"
+    },
+    "config": {
+        "process-timeout": 0
+    },
+    "require": {}
+}

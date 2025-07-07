@@ -1,0 +1,36 @@
+https://github.com/nikic/FastRoute/tree/master
+
+Dispatcher
+    dispatch
+
+DataGenerator
+    addRoute
+    getData
+
+Cache
+    get
+
+GenerateUri
+
+Exception
+
+RouteParser
+
+RouteCollector
+    protected readonly RouteParser $routeParser,
+    protected readonly DataGenerator $dataGenerator,
+    addRoute
+    registerNamedRoute
+    addGroup
+
+test
+
+создает список роутов
+    создаем спписок роутов из функции записывая их в массив
+создает кеш роутов
+    создать файл кеша роутов. вместо анализа роутов каждый раз заново
+ищет маршрут
+    маршрут ищем с помощью сравнения с uri
+    если есть параметры {foo} или необязательынх {foo?}
+вызывает контроллер
+    вызов функции маршрута
