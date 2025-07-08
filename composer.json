@@ -2,7 +2,7 @@
     "name": "serg/framework",
     "autoload": {
         "psr-4": {
-            "Serg\\Framework\\": "src/"
+            "Framework\\": "framework/"
         },
         "files": []
     },

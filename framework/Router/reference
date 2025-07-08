@@ -1,36 +1,38 @@
 https://github.com/nikic/FastRoute/tree/master
 
-Dispatcher
-    dispatch
+-создаем переменную $router
+-присваеваем ей произведение функкции simpleDispatcher
+-аргументом simpleDispatcher будет анонимная функция
+-аргументом анонимной функкции будет обьект new Router
+    проверит наличие кеша
+    вернет кеш либо
+    функкция будет поочередно присваивать роуты обьекту роутер
+    вернет обьект роутер
+-у обьекта роутер вызовем метод диспатч
 
-DataGenerator
-    addRoute
-    getData
+роутер будет состоять из routeParser и Dispatcher
+    роутеру нужо передать роутерКоллектор который хранит роуты
 
-Cache
-    get
 
-GenerateUri
+Router при команде addRoute
+    проверяет наличие кеша
+        если нет кеша берет массив роутов
+        и просчитывает их каждый
+        если есть кеш то помешает его в RouteCollectorColector
+        
 
-Exception
+    принимает path и пропускает его через функцию parse
+    обьекта RouteParser
+    RouteParser возвращает массив параметров и для сравнения
+    пример: www.game.com/user/{id} = [1=>user,2=>id]
+    пример: www.game.com/user/{id?} = [1=>user,2=>id:optional?]
+    
+    следущим этапом роутер добавляет в RouteCollector обьект
+        Route(pmethod.path,handler)
+            staticVars=>/user/{id} 
+            parserVars=>[1=>user,2=>id]
 
-RouteParser
+    возвращает войд
 
-RouteCollector
-    protected readonly RouteParser $routeParser,
-    protected readonly DataGenerator $dataGenerator,
-    addRoute
-    registerNamedRoute
-    addGroup
-
-test
-
-создает список роутов
-    создаем спписок роутов из функции записывая их в массив
-создает кеш роутов
-    создать файл кеша роутов. вместо анализа роутов каждый раз заново
-ищет маршрут
-    маршрут ищем с помощью сравнения с uri
-    если есть параметры {foo} или необязательынх {foo?}
-вызывает контроллер
-    вызов функции маршрута
+Router при команде dispatch
+    принимает method и uri
