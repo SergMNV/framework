@@ -1,7 +1,8 @@
 <?php
 
+use Framework\App;
+
 require_once __DIR__ . '../../vendor/autoload.php';
 
-print '1';
-
-die;
+$app = App::getInstance();
+$app->run();

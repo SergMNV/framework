@@ -8,17 +8,15 @@ use Framework\Router\RouteParser\RouteParserInterface;
 class Router
 {
     public function __construct(
-        // readonly
-        public RouteParserInterface $routeParser,
-        public DispatcherInterface $dispatcher,
+        // private readonly array $routes = [],
     ) {}
 
     public ?Route $current = null;
-        /**
-         * RouteCollector
-         *  public function addRoute();
+    /**
+     * RouteCollector
+     *  public function addRoute();
             public function matching();
-         */
+     */
     public function addRoute(string $metod, string $uri, callable $handler): void
     {
         // добавление роута

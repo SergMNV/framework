@@ -12,5 +12,7 @@
     "config": {
         "process-timeout": 0
     },
-    "require": {}
+    "require-dev": {
+        "symfony/var-dumper": "^7.3"
+    }
 }
