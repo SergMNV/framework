@@ -3,49 +3,21 @@
 namespace Framework\Router;
 
 use Framework\Router\Dispatcher\DispatcherInterface;
-use Framework\Router\RouteParser\RouteParserInterface;
+use Framework\Router\RouteCollector\RouteCollectorInterface;
 
-class Router
+final class Router
 {
     public function __construct(
-        // private readonly array $routes = [],
+        private DispatcherInterface $dispatcher,
+        private RouteCollectorInterface $routeCollector,
     ) {}
 
     public ?Route $current = null;
-    /**
-     * RouteCollector
-     *  public function addRoute();
-            public function matching();
-     */
-    public function addRoute(string $metod, string $uri, callable $handler): void
+
+    public function dispatch(string $requestMethod, string $requestUri): array
     {
-        // добавление роута
-
-        /**
-         * группа префикс
-         */
-    }
-
-    public function dispatch()
-    {
-        // вызов роута
-    }
-
-    public function matching()
-    {
-        // вычесление роута
-    }
-
-    public function normalisePath(string $path): string
-    {
-        $path = trim("{$path}");
-        $path = preg_replace('#/{2,}#', '/', $path);
-
-        return $path;
-        /**
-         * https://www.php.net/manual/ru/function.trim.php
-         * https://www.php.net/manual/ru/function.preg-replace.php
-         */
+        $collection = $this->routeCollector->getCollection();
+        return $this->dispatcher->dispatch($collection, $requestMethod, $requestUri);
     }
 
     public function redirect(string $path): void

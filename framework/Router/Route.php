@@ -15,16 +15,13 @@ class Route
         return new static('GET', $path, $handler);
     }
 
-    public function action()
+    public static function post(string $path, mixed $handler): static
     {
-        if (is_array($this->handler)) {
-            
-        }
-
-        if(is_callable($this->handler)){
-            call_user_func($this->handler)
-        }
+        return new static('POST', $path, $handler);
     }
 
-    
+    public static function delete(string $path, mixed $handler): static
+    {
+        return new static('DELETE', $path, $handler);
+    }
 }

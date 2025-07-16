@@ -4,7 +4,9 @@
         "psr-4": {
             "Framework\\": "framework/"
         },
-        "files": []
+        "files": [
+            "framework/Router/function.php"
+        ]
     },
     "scripts": {
         "serve": "php -S localhost:8000 -t public/"
